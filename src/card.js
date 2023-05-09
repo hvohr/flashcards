@@ -16,18 +16,29 @@ function evaluateGuess(guess, correctAnswer) {
   }
 }
 
-function countCards(deck) {
-  console.log(deck)
-}
-
-function createDeck(cards) {
+function createDeck(card1, card2) {
+  // console.log(card1, card2)
   var deck = {
-    cards: cards
+    cards: []
   }
+  deck.cards.push(card1, card2)
+  // console.log(deck.cards)
   return deck
 }
 
+function countCards(deck) {
+  return deck.length
+}
 
+function createRound(deck, currentCard = deck.cards[0], turns = 0, incorrectGuesses = []) {
+  var round = {
+    deck: deck,
+    currentCard: currentCard,
+    turns: turns,
+    incorrectGuesses: incorrectGuesses
+  }
+  return round
+}
 
 
 
@@ -35,5 +46,6 @@ module.exports = {
   createCard,
   evaluateGuess,
   createDeck,
-  countCards
+  countCards,
+  createRound
 }
