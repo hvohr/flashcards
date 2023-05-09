@@ -16,20 +16,36 @@ function evaluateGuess(guess, correctAnswer) {
   }
 }
 
-function countDeck(cards) {
-  let deck = []
-  deck.push(cards)
+function createDeck(card1, card2) {
+  // console.log(card1, card2)
+  var deck = {
+    cards: []
+  }
+  deck.cards.push(card1, card2)
+  // console.log(deck.cards)
+  return deck
+}
+
+function countCards(deck) {
   return deck.length
 }
 
-// function countDeck(deck) {
-//   return deck.length
-// }
+function createRound(deck, currentCard = deck.cards[0], turns = 0, incorrectGuesses = []) {
+  var round = {
+    deck: deck,
+    currentCard: currentCard,
+    turns: turns,
+    incorrectGuesses: incorrectGuesses
+  }
+  return round
+}
+
 
 
 module.exports = {
   createCard,
   evaluateGuess,
-  // createDeck,
-  countDeck
+  createDeck,
+  countCards,
+  createRound
 }
