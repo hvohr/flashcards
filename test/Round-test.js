@@ -49,7 +49,7 @@ describe('round object', function () {
     const incorrectGuesses = []
     const round = createRound(deck, currentCard, turns, incorrectGuesses);
 
-    expect(round.incorrectGuesses).to.equal([]);
+    expect(round.incorrectGuesses).to.deep.equal([]);
   })
   it.skip('should store incorrect guesses in that property', function () {
   const card = createCard(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
