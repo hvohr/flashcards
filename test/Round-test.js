@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const { createCard, createDeck, createRound, evaluateGuess } = require('../src/card');
+const { createCard, createDeck, createRound, evaluateGuess, incorrectAnswer } = require('../src/card');
 
 describe('round object', function () {
   it('should be able to create a round object and properties', function () {
@@ -51,14 +51,28 @@ describe('round object', function () {
 
     expect(round.incorrectGuesses).to.deep.equal([]);
   })
-  it.skip('should store incorrect guesses in that property', function () {
-  const card = createCard(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
-  const guess = 'array'
-  const correctAnswer = card.correctAnswer
-  const evaluate = evaluateGuess(guess, correctAnswer)
-  createRound(deck, currentCard, turns, incorrectGuesses);
+  it('should store incorrect guesses in that property', function () {
+  // const card1 = createCard(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
+  // const card2 = createCard(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method');
+  // const deck = createDeck(card1, card2)
+  // const currentCard = deck.cards[0]
+  // const turns = 0
+  // const incorrectGuesses = []
+  // const round = createRound(deck, currentCard, turns, incorrectGuesses);
+  // const incorrect = incorrectAnswer(round.currentCard, guess)
+  // expect(incorrect).to.equal([currentCard])
+  const card1 = createCard(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
+  const card2 = createCard(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method')  
+  const deck = createDeck(card1, card2)
+  const currentCard = deck.cards[0]
+  const turns = 0
+  const incorrectGuesses = []
+  const round = createRound(deck, currentCard, turns, incorrectGuesses);
+  const guess = 'array' 
+  const correctAnswer = card1.correctAnswer
+  const evaluate = incorrectAnswer(guess, correctAnswer, round)
 
-  expect(round.incorrectGuesses).to.equal([card])
+  expect(evaluate).to.deep.equal(incorrectGuesses)
   })
 })
 // describe('taketurn function', function() {
