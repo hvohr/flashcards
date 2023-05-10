@@ -1,11 +1,10 @@
 function createCard(id, question, answers, correctAnswer) {
-  let card = {
-    id: id,
-    question: question,
-    answers: answers,
-    correctAnswer: correctAnswer
+  return {
+    id,
+    question,
+    answers,
+    correctAnswer
   }
-  return card
 }
 
 function evaluateGuess(guess, correctAnswer) {
@@ -17,7 +16,7 @@ function evaluateGuess(guess, correctAnswer) {
 }
 
 function createDeck(card1, card2) {
-  var deck = {
+  let deck = {
     cards: []
   }
   deck.cards.push(card1, card2)
@@ -29,19 +28,17 @@ function countCards(deck) {
 }
 
 function createRound(deck, currentCard = deck.cards[0], turns = 0, incorrectGuesses = []) {
-  var round = {
-    deck: deck,
-    currentCard: currentCard,
-    turns: turns,
-    incorrectGuesses: incorrectGuesses
+  return {
+    deck,
+    currentCard,
+    turns,
+    incorrectGuesses
   }
-  return round
-}
+  }
 
-function incorrectAnswer(guess, correctAnswer, round) {
-  if (guess !== correctAnswer) {
-    round.incorrectGuesses.push(guess)
-    return round.incorrectGuesses
+function userGuess(card1, answer, round) {
+  if (answer === 'Incorrect!') {
+    round.incorrectGuesses.push(card1.id)
   }
 }
 
@@ -55,5 +52,6 @@ module.exports = {
   createDeck,
   countCards,
   createRound,
-  incorrectAnswer
+  userGuess,
+  takeTurn
 }
