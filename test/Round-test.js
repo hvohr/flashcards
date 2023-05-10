@@ -40,8 +40,8 @@ describe('round object', function () {
     const round = createRound(deck);
 
     expect(round.incorrectGuesses).to.deep.equal([]);
-  })
-  it('should store incorrect guesses in that property', function () {
+})
+it('should store incorrect guesses in that property', function () {
   const card1 = createCard(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
   const card2 = createCard(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method')  
   const deck = createDeck(card1, card2)
@@ -51,17 +51,17 @@ describe('round object', function () {
   const result = evaluateGuess(guess1, correctAnswer)
   takeTurn(card1, result, round)
   expect(round.incorrectGuesses).to.deep.equal([card1.id])
-  })
-  it('should increment the turn count when correct', function () {
-    const card1 = createCard(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
-    const card2 = createCard(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method')  
-    const deck = createDeck(card1, card2)
-    const round = createRound(deck);
-    const guess1 = 'array' 
-    correctAnswer = card1.correctAnswer
-    const result = evaluateGuess(guess1, correctAnswer)
-    takeTurn(card1, result, round)
-    expect(round.turns).to.deep.equal(1)
+})
+it('should increment the turn count when correct', function () {
+  const card1 = createCard(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
+  const card2 = createCard(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method')  
+  const deck = createDeck(card1, card2)
+  const round = createRound(deck);
+  const guess1 = 'array' 
+  correctAnswer = card1.correctAnswer
+  const result = evaluateGuess(guess1, correctAnswer)
+  takeTurn(card1, result, round)
+  expect(round.turns).to.deep.equal(1)
 })
 it('should increment the turn count when incorrect', function () {
   const card1 = createCard(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
@@ -73,5 +73,16 @@ it('should increment the turn count when incorrect', function () {
   const result = evaluateGuess(guess1, correctAnswer)
   takeTurn(card1, result, round)
   expect(round.turns).to.deep.equal(1)
+})
+it('should remove the card after user guess', function () {
+  const card1 = createCard(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
+  const card2 = createCard(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method')  
+  const deck = createDeck(card1, card2)
+  const round = createRound(deck);
+  const guess1 = 'array' 
+  correctAnswer = card1.correctAnswer
+  const result = evaluateGuess(guess1, correctAnswer)
+  takeTurn(card1, result, round)
+  expect(round.currentCard).to.deep.equal(card2)
 })
 })
