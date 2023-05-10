@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const { createCard, createDeck, createRound, takeTurn, evaluateGuess, calculatePercent } = require('../src/card');
+const { createCard, createDeck, createRound, takeTurn, evaluateGuess, calculatePercentCorrect, endRound } = require('../src/card');
 
 describe('round object', function () {
   it('should be able to create a round object and properties', function () {
@@ -94,8 +94,20 @@ describe('calculate percent', function () {
   const card2 = createCard(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method')  
   const deck = createDeck(card1, card2)
   const round = createRound(deck);
-  var percentage = calculatePercent(round)
-  expect(percentage).to.deep.equal("100%")
+  var percentage = calculatePercentCorrect(round)
 
+  expect(percentage).to.deep.equal("100%")
 })
+// describe('calculate percent', function () {
+//   it('should tell user message about ending round and total percentage of correct', function () {
+//   const card1 = createCard(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
+//   const card2 = createCard(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method')  
+//   const deck = createDeck(card1, card2)
+//   const round = createRound(deck);
+//   var percentage = calculatePercentCorrect(round)
+//   var total = endRound(round)
+//   expect(total).to.equal("Round over! You answered 100% of the questions correctly!")
+
+// })
 })
+// })
