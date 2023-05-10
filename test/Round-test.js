@@ -66,12 +66,12 @@ describe('round object', function () {
   expect(evaluate).to.deep.equal(incorrectGuesses)
   })
 })
-// describe('taketurn function', function() {
-//   it('should update the turns count when correct', function () {
+describe('taketurn function', function() {
+  it('should update the turns count when correct', function () {
     
 
-//   })
-//   it('should update the turns count when incorrect', function () {
+  })
+  it('should update the turns count when incorrect', function () {
 
-//   })
-// })
+  })
+})

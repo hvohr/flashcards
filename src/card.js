@@ -45,6 +45,10 @@ function incorrectAnswer(guess, correctAnswer, round) {
   }
 }
 
+function takeTurn(guess, round) {
+  
+}
+
 module.exports = {
   createCard,
   evaluateGuess,
