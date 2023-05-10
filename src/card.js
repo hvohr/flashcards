@@ -46,10 +46,18 @@ function takeTurn(card1, answer, round) {
   round.currentCard = round.deck.cards[index + 1]
 }
 
-function calculatePercent(round) {
+function calculatePercentCorrect(round) {
   var number = (100 -((round.incorrectGuesses.length/round.deck.cards.length) * 100))
   return `${number}%`
 }
+
+function endRound(round) {
+  console.log(round.turns)
+  if (round.turns === 30) {
+    return `Round over! You answered ${calculatePercentCorrect()} of the questions correctly!`
+  }
+}
+
 
 module.exports = {
   createCard,
@@ -58,5 +66,6 @@ module.exports = {
   countCards,
   createRound,
   takeTurn,
-  calculatePercent
+  calculatePercentCorrect,
+  endRound
 }
