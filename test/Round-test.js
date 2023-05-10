@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const { createCard, createDeck, createRound, incorrectAnswer } = require('../src/card');
+const { createCard, createDeck, createRound, userGuess, takeTurn, evaluateGuess } = require('../src/card');
 
 describe('round object', function () {
   it('should be able to create a round object and properties', function () {
@@ -12,7 +12,6 @@ describe('round object', function () {
     const turns = 0
     const incorrectGuesses = []
     const round = createRound(deck, currentCard, turns, incorrectGuesses);
-
     expect(round.deck).to.equal(deck);
     expect(round.currentCard).to.equal(currentCard);
     expect(round.turns).to.equal(turns);
@@ -22,10 +21,7 @@ describe('round object', function () {
     const card1 = createCard(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
     const card2 = createCard(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method');
     const deck = createDeck(card1, card2)
-    const currentCard = deck.cards[0]
-    const turns = 0
-    const incorrectGuesses = []
-    const round = createRound(deck, currentCard, turns, incorrectGuesses);
+    const round = createRound(deck);
 
     expect(round.currentCard).to.equal(deck.cards[0]);
   })
@@ -33,10 +29,7 @@ describe('round object', function () {
     const card1 = createCard(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
     const card2 = createCard(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method');
     const deck = createDeck(card1, card2)
-    const currentCard = deck.cards[0]
-    const turns = 0
-    const incorrectGuesses = []
-    const round = createRound(deck, currentCard, turns, incorrectGuesses);
+    const round = createRound(deck);
 
     expect(round.turns).to.equal(0);
   })
@@ -44,10 +37,7 @@ describe('round object', function () {
     const card1 = createCard(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
     const card2 = createCard(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method');
     const deck = createDeck(card1, card2)
-    const currentCard = deck.cards[0]
-    const turns = 0
-    const incorrectGuesses = []
-    const round = createRound(deck, currentCard, turns, incorrectGuesses);
+    const round = createRound(deck);
 
     expect(round.incorrectGuesses).to.deep.equal([]);
   })
@@ -55,23 +45,22 @@ describe('round object', function () {
   const card1 = createCard(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
   const card2 = createCard(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method')  
   const deck = createDeck(card1, card2)
-  const currentCard = deck.cards[0]
-  const turns = 0
-  const incorrectGuesses = []
-  const round = createRound(deck, currentCard, turns, incorrectGuesses);
-  const guess = 'array' 
-  const correctAnswer = card1.correctAnswer
-  const evaluate = incorrectAnswer(guess, correctAnswer, round)
-
-  expect(evaluate).to.deep.equal(incorrectGuesses)
+  const round = createRound(deck);
+  const guess1 = 'array' 
+  correctAnswer = card1.correctAnswer
+  const result = evaluateGuess(guess1, correctAnswer)
+  userGuess(card1, result, round)
+  expect(round.incorrectGuesses).to.deep.equal([card1.id])
   })
 })
 describe('taketurn function', function() {
-  it('should update the turns count when correct', function () {
-    
+  it.skip('should update the turns count when correct', function () {
+  const card = createCard(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
+  const guess = 'object'
+  takeTurn(guess, round)
 
   })
-  it('should update the turns count when incorrect', function () {
+  it.skip('should update the turns count when incorrect', function () {
 
   })
 })
