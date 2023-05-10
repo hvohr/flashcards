@@ -17,12 +17,10 @@ function evaluateGuess(guess, correctAnswer) {
 }
 
 function createDeck(card1, card2) {
-  // console.log(card1, card2)
   var deck = {
     cards: []
   }
   deck.cards.push(card1, card2)
-  // console.log(deck.cards)
   return deck
 }
 
@@ -40,12 +38,18 @@ function createRound(deck, currentCard = deck.cards[0], turns = 0, incorrectGues
   return round
 }
 
-
+function incorrectAnswer(guess, correctAnswer, round) {
+  if (guess !== correctAnswer) {
+    round.incorrectGuesses.push(guess)
+    return round.incorrectGuesses
+  }
+}
 
 module.exports = {
   createCard,
   evaluateGuess,
   createDeck,
   countCards,
-  createRound
+  createRound,
+  incorrectAnswer
 }
