@@ -37,6 +37,7 @@ function createRound(deck, currentCard = deck.cards[0], turns = 0, incorrectGues
 }
 
 function takeTurn(card1, answer, round) {
+  evaluateGuess()
   if (answer === 'Incorrect!') {
     round.incorrectGuesses.push(card1.id)
   }
@@ -45,6 +46,10 @@ function takeTurn(card1, answer, round) {
   round.currentCard = round.deck.cards[index + 1]
 }
 
+function calculatePercent(round) {
+  var number = (100 -((round.incorrectGuesses.length/round.deck.cards.length) * 100))
+  return `${number}%`
+}
 
 module.exports = {
   createCard,
@@ -53,4 +58,5 @@ module.exports = {
   countCards,
   createRound,
   takeTurn,
+  calculatePercent
 }
