@@ -39,11 +39,12 @@ function createRound(deck, currentCard = deck.cards[0], turns = 0, incorrectGues
 function takeTurn(card1, answer, round) {
   if (answer === 'Incorrect!') {
     round.incorrectGuesses.push(card1.id)
-    round.turns++
-  } else {
-    round.turns++
   }
+  round.turns++
+  const index = round.deck.cards.indexOf(card1)
+  round.currentCard = round.deck.cards[index + 1]
 }
+
 
 module.exports = {
   createCard,
