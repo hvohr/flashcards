@@ -34,16 +34,15 @@ function createRound(deck, currentCard = deck.cards[0], turns = 0, incorrectGues
     turns,
     incorrectGuesses
   }
-  }
-
-function userGuess(card1, answer, round) {
-  if (answer === 'Incorrect!') {
-    round.incorrectGuesses.push(card1.id)
-  }
 }
 
-function takeTurn(guess, round) {
-  
+function takeTurn(card1, answer, round) {
+  if (answer === 'Incorrect!') {
+    round.incorrectGuesses.push(card1.id)
+    round.turns++
+  } else {
+    round.turns++
+  }
 }
 
 module.exports = {
@@ -52,6 +51,5 @@ module.exports = {
   createDeck,
   countCards,
   createRound,
-  userGuess,
-  takeTurn
+  takeTurn,
 }
