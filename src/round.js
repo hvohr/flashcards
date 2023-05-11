@@ -10,7 +10,7 @@ if (round.turns === 30) {
 }
 
 function takeTurn(card, round) {
-  var feedback1 = "Correct!"
+  let feedback1 = "Correct!"
   if (evaluateGuess(card, round.currentCard.correctAnswer) === 'Incorrect!') {
     round.incorrectGuesses.push(card.id)
     feedback1 = "Incorrect!"

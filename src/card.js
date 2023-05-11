@@ -26,7 +26,7 @@ function createRound(deck, currentCard = deck.cards[0], turns = 0, incorrectGues
 }
 
 function calculatePercentCorrect(round) {
-  var number = (100 -(((round.incorrectGuesses.length)/(round.deck.cards.length)) * 100))
+  let number = (100 -(((round.incorrectGuesses.length)/(round.deck.cards.length)) * 100))
   return number
 }
 
