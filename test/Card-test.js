@@ -5,6 +5,7 @@ const { createCard } = require('../src/card');
 
 describe('card', function () {
   it('should be a function', function () {
+    
     expect(createCard).to.be.a('function');
   });
 
