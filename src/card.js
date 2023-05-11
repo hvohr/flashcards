@@ -26,21 +26,12 @@ function createRound(deck, currentCard = deck.cards[0], turns = 0, incorrectGues
 
 function calculatePercentCorrect(round) {
   var number = (100 -((round.incorrectGuesses.length/round.deck.cards.length) * 100))
-  return `${number}%`
+  return number
 }
-
-function endRound(round) {
-  console.log(round.turns)
-  if (round.turns === 30) {
-    return `Round over! You answered ${calculatePercentCorrect()} of the questions correctly!`
-  }
-}
-
 
 module.exports = {
   createCard,
   evaluateGuess,
   createRound,
-  calculatePercentCorrect,
-  endRound,
+  calculatePercentCorrect
 }
