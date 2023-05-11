@@ -4,7 +4,7 @@ const util = require('./util');
 
 const {createRound } = require('../src/card');
 const {createDeck, countCards } = require('../src/deck');
-// const {endRound, takeTurn } = require('../src/round');
+// const {endRound } = require('../src/round');
 
 function printMessage(deck2) {
   const round1 = createRound(deck2)
@@ -21,7 +21,6 @@ function start() {
   printMessage(deck1)
   const round1 = createRound(deck1)
   printQuestion(round1)
- 
 }
 
 module.exports = { start, printMessage, printQuestion };

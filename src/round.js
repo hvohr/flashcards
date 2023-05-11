@@ -1,18 +1,18 @@
 
-const {evaluateGuess, calculatePercentCorrect} = require('../src/card');
+const {evaluateGuess, calculatePercentCorrect} = require('../src/card')
 
 
 function endRound(round) {
-  console.log(round.incorrectGuesses)
-  if (round.turns === 30) {
-    return `Round over! You answered ${calculatePercentCorrect(round.incorrectGuesses)}% of the questions correctly!`
+if (round.turns === 30) {
+    console.log(`Round over! You answered ${calculatePercentCorrect(round)}% of the questions correctly!`)
+    return true
   }
 }
 
-function takeTurn(id, round) {
+function takeTurn(card, round) {
   var feedback1 = "Correct!"
-  if (evaluateGuess(id, round.currentCard.correctAnswer) === 'Incorrect!') {
-    round.incorrectGuesses.push(id)
+  if (evaluateGuess(card, round.currentCard.correctAnswer) === 'Incorrect!') {
+    round.incorrectGuesses.push(card.id)
     feedback1 = "Incorrect!"
   }
   round.turns++
