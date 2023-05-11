@@ -52,21 +52,15 @@ it('should store incorrect guesses in that property', function () {
   const card2 = createCard(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method')  
   const deck = createDeck([card1, card2])
   const round = createRound(deck);
-  const guess1 = 'array' 
-  correctAnswer = card1.correctAnswer
-  const result = evaluateGuess(guess1, correctAnswer)
-  takeTurn(card1, result, round)
-  expect(round.incorrectGuesses).to.deep.equal([card1.id])
+  takeTurn(card1, round)
+  expect(round.incorrectGuesses).to.deep.equal([1])
 })
 it('should increment the turn count when correct', function () {
   const card1 = createCard(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
   const card2 = createCard(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method')  
   const deck = createDeck([card1, card2])
   const round = createRound(deck);
-  const guess1 = 'array' 
-  correctAnswer = card1.correctAnswer
-  const result = evaluateGuess(guess1, correctAnswer)
-  takeTurn(card1, result, round)
+  takeTurn(card1, round)
   expect(round.turns).to.deep.equal(1)
 })
 it('should increment the turn count when incorrect', function () {
@@ -74,10 +68,7 @@ it('should increment the turn count when incorrect', function () {
   const card2 = createCard(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method')  
   const deck = createDeck([card1, card2])
   const round = createRound(deck);
-  const guess1 = 'array' 
-  correctAnswer = card1.correctAnswer
-  const result = evaluateGuess(guess1, correctAnswer)
-  takeTurn(card1, result, round)
+  takeTurn(card1, round)
   expect(round.turns).to.deep.equal(1)
 })
 it('should go to the next card after user guess', function () {
@@ -85,10 +76,7 @@ it('should go to the next card after user guess', function () {
   const card2 = createCard(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method')  
   const deck = createDeck([card1, card2])
   const round = createRound(deck);
-  const guess1 = 'array' 
-  correctAnswer = card1.correctAnswer
-  const result = evaluateGuess(guess1, correctAnswer)
-  takeTurn(card1, result, round)
+  takeTurn(card1, round)
   expect(round.currentCard).to.deep.equal(card2)
 })
 })
@@ -100,18 +88,18 @@ describe('calculate percent', function () {
   const round = createRound(deck);
   var percentage = calculatePercentCorrect(round)
 
-  expect(percentage).to.deep.equal("100%")
+  expect(percentage).to.deep.equal(100)
 })
-// describe('calculate percent', function () {
-//   it('should tell user message about ending round and total percentage of correct', function () {
-//   const card1 = createCard(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
-//   const card2 = createCard(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method')  
-//   const deck = createDeck([card1, card2])
-//   const round = createRound(deck);
-//   var percentage = calculatePercentCorrect(round)
-//   var total = endRound(round)
-//   expect(total).to.equal("Round over! You answered 100% of the questions correctly!")
+describe('calculate percent', function () {
+  it('should tell user message about ending round and total percentage of correct', function () {
+  const card1 = createCard(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
+  const card2 = createCard(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method')  
+  const deck = createDeck([card1, card2])
+  const round = createRound(deck);
+  calculatePercentCorrect(round)
+  var finalRound = endRound(round)
+  expect(finalRound).to.equal("Round over! You answered 100% of the questions correctly!")
 
-// })
 })
-// })
+})
+})
