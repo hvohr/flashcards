@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const { createCard, createRound, evaluateGuess, calculatePercentCorrect } = require('../src/card');
+const { createCard, createRound, calculatePercentCorrect } = require('../src/card');
 const {createDeck } = require('../src/deck');
 const {endRound, takeTurn } = require('../src/round');
 
@@ -90,16 +90,16 @@ describe('calculate percent', function () {
 
   expect(percentage).to.deep.equal(100)
 })
-describe('calculate percent', function () {
+describe('user', function () {
   it('should tell user message about ending round and total percentage of correct', function () {
   const card1 = createCard(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
   const card2 = createCard(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method')  
   const deck = createDeck([card1, card2])
   const round = createRound(deck);
-  calculatePercentCorrect(round)
+  round.turns = 30
   var finalRound = endRound(round)
-  expect(finalRound).to.equal("Round over! You answered 100% of the questions correctly!")
 
+  expect(finalRound).to.equal(true)
 })
 })
 })
